@@ -1,0 +1,59 @@
+require 'test_helper'
+
+class BlockTest < Minitest::Test
+  def test_basic_rendering
+    block = Block.new(15, 3)
+    block.paper.put_line(1, 1, 'hello world')
+
+    expected_text =
+      "               \n" +
+      " hello world   \n" +
+      "               "
+
+    assert_equal expected_text, block.to_s
+  end
+
+  def test_cropped_rendering
+    block = Block.new(10, 3)
+    block.paper.put_line(1, 1, 'hello world')
+
+    expected_text =
+      "          \n" +
+      " hello wor\n" +
+      "          "
+
+    assert_equal expected_text, block.to_s
+  end
+
+  def test_margin_rendering
+    block = Block.new(4, 1, 0, [1, 2, 3, 4])
+    block.paper.put_line(1, 0, 'oi')
+
+    expected_text =
+      "          \n" +
+      "     oi   \n" +
+      "          \n" +
+      "          \n" +
+      "          "
+
+    assert_equal expected_text, block.to_s
+  end
+
+  def test_full_render
+    block = Block.new(3, 1, 1, [1, 2], [2, 1])
+    block.paper.put_line(0, 0, 'hi!')
+
+    expected_text =
+      "           \n" +
+      "  +-----+  \n" +
+      "  |     |  \n" +
+      "  |     |  \n" +
+      "  | hi! |  \n" +
+      "  |     |  \n" +
+      "  |     |  \n" +
+      "  +-----+  \n" +
+      "           "
+
+    assert_equal expected_text, block.to_s
+  end
+end
