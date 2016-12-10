@@ -1,6 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    codecov (0.1.9)
+      json
+      simplecov
+      url
     docile (1.1.5)
     json (1.8.3)
     minitest (5.10.1)
@@ -11,11 +15,13 @@ GEM
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    url (0.3.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  codecov
   minitest (~> 5.8)
   rake
   rr

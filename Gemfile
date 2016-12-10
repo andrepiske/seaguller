@@ -7,4 +7,5 @@ group :test do
   gem 'minitest', '~> 5.8'
   gem 'rr', require: false
   gem 'simplecov', require: false
+  gem 'codecov', require: false
 end

@@ -7,6 +7,11 @@ end
 
 SimpleCov.start
 
+if ENV['CIRCLE_ARTIFACTS']
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end
+
 require 'seaguller'
 require 'minitest'
 require 'minitest/autorun'
