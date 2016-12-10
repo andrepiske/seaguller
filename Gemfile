@@ -5,5 +5,5 @@ gem 'rake'
 
 group :test do
   gem 'minitest', '~> 5.8'
+  gem 'rr', require: false
 end
-

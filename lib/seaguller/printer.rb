@@ -32,7 +32,7 @@ class Printer
 
 
   def print_char(char)
-    @paper.put_char char
+    @paper.put_char @x, @y, char
     @x += 1
   end
 
