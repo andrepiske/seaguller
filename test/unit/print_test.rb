@@ -14,6 +14,24 @@ class PrintTest < Minitest::Test
     printer.print_char '!'
   end
 
+  def test_print_block
+    paper = mock(my_mock_object = Object.new)
+    block_fixture =
+      "a        \n" +
+      " -*-*-*- \n" +
+      "        x"
+    stub(paper).put_line 0, 0, 'hi'
+    stub(paper).put_line 2, 0, 'a        '
+    stub(paper).put_line 2, 1, ' -*-*-*- '
+    stub(paper).put_line 2, 2, '        x'
+    stub(paper).put_char 11, 2, '!'
+
+    printer = Printer.new(paper)
+    printer.print_line 'hi'
+    printer.print_block block_fixture
+    printer.print_char '!'
+  end
+
   def test_moving_around
     paper = mock(my_mock_object = Object.new)
     stub(paper).put_line 0, 0, 'hello'

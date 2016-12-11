@@ -26,7 +26,7 @@ class Printer
     lines.zip(height.times) do |line, offset|
       @paper.put_line(@x, @y + offset, line)
     end
-    @y += height
+    @y += height - 1
     @x += width
   end
 
