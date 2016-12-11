@@ -5,10 +5,22 @@ class Seaguller::ParserTest < Seaguller::Test
     pipe = Object.new
     mock(pipe).print_char 'h'
     mock(pipe).print_char '{'
+    mock(pipe).break_line
     mock(pipe).print_char 'e'
 
     parser = Parser.new pipe
-    parser.feed 'h\\{e'
+    parser.feed "h\\{\ne"
+    parser.feed nil
+  end
+
+  def test_closed_buffer
+    pipe = Object.new
+    stub(pipe).print_char
+
+    parser = Parser.new pipe
+    parser.feed 'a'
+    parser.feed nil
+    assert_raises(Parser::BufferAlreadyClosedError) { parser.feed 'b' }
   end
 
   def test_parse_simple_test
