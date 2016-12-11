@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PrintTest < Minitest::Test
+class PrintTest < Seaguller::Test
   def test_basic_printing_sequence
     paper = mock(my_mock_object = Object.new)
     stub(paper).put_char 2, 3, 'x'

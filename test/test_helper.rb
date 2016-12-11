@@ -16,3 +16,9 @@ require 'seaguller'
 require 'minitest'
 require 'minitest/autorun'
 require 'rr'
+
+class Seaguller::Test < ::Minitest::Test
+  def fixtures_path
+    File.absolute_path("#{__FILE__}/../fixtures")
+  end
+end

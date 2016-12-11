@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BlockTest < Minitest::Test
+class BlockTest < Seaguller::Test
   def test_basic_rendering
     block = Block.new(15, 3)
     block.paper.put_line(1, 1, 'hello world')
