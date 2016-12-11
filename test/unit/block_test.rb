@@ -39,6 +39,53 @@ class BlockTest < Minitest::Test
     assert_equal expected_text, block.to_s
   end
 
+  def test_value_normalization_3
+    block = Block.new(3, 1, 1, 1, [1, 3, 2])
+    block.paper.put_line(0, 0, 'hey')
+
+    expected_text =
+      "             \n" +
+      " +---------+ \n" +
+      " |         | \n" +
+      " |   hey   | \n" +
+      " |         | \n" +
+      " |         | \n" +
+      " +---------+ \n" +
+      "             "
+
+    assert_equal expected_text, block.to_s
+  end
+
+  def test_value_normalization_nil
+    block = Block.new(3, 1, 1, 1, nil)
+    block.paper.put_line(0, 0, 'hey')
+
+    expected_text =
+      "       \n" +
+      " +---+ \n" +
+      " |hey| \n" +
+      " +---+ \n" +
+      "       "
+
+    assert_equal expected_text, block.to_s
+  end
+
+  def test_value_normalization_true
+    block = Block.new(3, 1, 1, 1, true)
+    block.paper.put_line(0, 0, 'hey')
+
+    expected_text =
+      "         \n" +
+      " +-----+ \n" +
+      " |     | \n" +
+      " | hey | \n" +
+      " |     | \n" +
+      " +-----+ \n" +
+      "         "
+
+    assert_equal expected_text, block.to_s
+  end
+
   def test_full_render
     block = Block.new(3, 1, 1, [1, 2], [2, 1])
     block.paper.put_line(0, 0, 'hi!')

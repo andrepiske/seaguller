@@ -56,11 +56,11 @@ class Block
   def normalize_value(x)
     if x.is_a?(Fixnum)
       [x] * 4
-    elsif x.length == 2
+    elsif x.respond_to?(:length) && x.length == 2
       [x[0], x[1], x[0], x[1]]
-    elsif x.length == 3
+    elsif x.respond_to?(:length) && x.length == 3
       [x[0], x[1], x[2], x[1]]
-    elsif x.length == 4
+    elsif x.respond_to?(:length) && x.length == 4
       x.dup
     elsif x == true
       [1] * 4
